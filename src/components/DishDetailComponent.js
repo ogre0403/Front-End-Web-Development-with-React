@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap'
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap'
 
 class DishDetail extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   renderDish(dish) {
     if (dish != null) {
       const comment = dish.comments.map((c) => {
@@ -50,7 +46,11 @@ class DishDetail extends Component {
   }
 
   render() {
-    return this.renderDish(this.props.dish)
+    return (
+      <div className="container">
+        <div className="row">{this.renderDish(this.props.dish)}</div>
+      </div>
+    )
   }
 }
 
