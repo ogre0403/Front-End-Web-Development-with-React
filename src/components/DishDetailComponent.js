@@ -18,6 +18,10 @@ import {
 import { Control, LocalForm, Errors } from 'react-redux-form'
 import { Link } from 'react-router-dom'
 
+const required = (val) => val && val.length
+const maxLength = (len) => (val) => !val || val.length <= len
+const minLength = (len) => (val) => val && val.length >= len
+
 class CommentForm extends Component {
   constructor(props) {
     super(props)
@@ -62,6 +66,21 @@ class CommentForm extends Component {
                   name="yourname"
                   placeholder="Your Name"
                   className="form-control"
+                  validators={{
+                    required,
+                    minLength: minLength(3),
+                    maxLength: maxLength(15),
+                  }}
+                />
+                <Errors
+                  className="text-danger"
+                  model=".yourname"
+                  show="touched"
+                  messages={{
+                    required: 'Required',
+                    minLength: 'Must be greater than 2 characters',
+                    maxLength: 'Must be 15 characters or less',
+                  }}
                 />
               </Row>
               <Row className="form-group ml-1 mr-1">
