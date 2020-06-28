@@ -10,6 +10,7 @@ import Home from './HomeComponent'
 import Contact from './ContackComponent'
 import DishDetail from './DishDetailComponent'
 import About from './AboutComponent'
+import { addComment } from '../redux/ActionCreators'
 
 const mapStateToProps = (state) => {
   return {
@@ -20,11 +21,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-class Main extends Component {
-  constructor(props) {
-    super(props)
-  }
+const mapDispatchToProps = (dispatch) => ({
+  addComment1: (dishId, rating, author, comment) => dispatch(addComment(dishId, rating, author, comment)),
+})
 
+class Main extends Component {
   render() {
     // function HomePage() {
     const HomePage = () => {
@@ -42,6 +43,7 @@ class Main extends Component {
         <DishDetail
           dish={this.props.dishes.filter((dish) => dish.id === parseInt(props.match.params.dishId, 10))[0]}
           comments={this.props.comments.filter((comment) => comment.dishId === parseInt(props.match.params.dishId, 10))}
+          addComment={this.props.addComment1}
         />
       )
     }
@@ -63,4 +65,4 @@ class Main extends Component {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Main))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main))
