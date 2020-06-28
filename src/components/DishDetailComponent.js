@@ -1,7 +1,15 @@
 import React from 'react'
 
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap'
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
+
+const CommentForm = () => {
+  return (
+    <Button outline color="secondary">
+      <span className="fa fa-pencil fa-lg"></span> Submit Comment
+    </Button>
+  )
+}
 
 // function RenderDish({ dish }) {
 // or
@@ -40,6 +48,7 @@ const RenderDish = ({ dish, comments }) => {
               {comment}
             </CardBody>
           </Card>
+          <CommentForm />
         </div>
       </>
     )
