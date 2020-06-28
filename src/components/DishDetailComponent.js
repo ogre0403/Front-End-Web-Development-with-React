@@ -68,10 +68,10 @@ class CommentForm extends Component {
                 <Label htmlFor="comment">Comment</Label>
                 <Control.textarea model=".comment" id="comment" name="comment" rows="6" className="form-control" />
               </Row>
+              <Button type="submit" value="submit" color="primary">
+                Submit
+              </Button>
             </LocalForm>
-            <Button type="submit" value="submit" color="primary">
-              Submit
-            </Button>
           </ModalBody>
         </Modal>
         <Button outline color="secondary" onClick={this.toggleModal}>
